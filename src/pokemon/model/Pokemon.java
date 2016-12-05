@@ -16,7 +16,7 @@ public class Pokemon
 	/*
 	public String getPokemonTypes()
 	{
-		String pokemonTypes = "This Pokemon is of type:\n";
+		String pokemonTypes = "This Pokemon is of type(s):\n";
 		Class<?> [] types = getClass().getInterfaces();
 		String [] pokeTypes = new String[types.length];
 		for(int index = 0; index < types.length; index++)
@@ -33,6 +33,26 @@ public class Pokemon
 		}
 		
 		return pokemonTypes;
+	}
+	
+	public String to String()
+	{
+	
+	}
+	
+	public String getPokemonInformation()
+	{
+		String pokemonInfo = "This Pokemon is of type: " + this.getClass().getSimpleName();
+		
+		return pokemonInfo;
+	}
+	
+	public int getHealthPoints(}
+	{
+	}
+	
+	public int getAttackPoints()
+	{
 	}
 	*/
 }
