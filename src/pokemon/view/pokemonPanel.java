@@ -1,5 +1,8 @@
 package pokemon.view;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -13,7 +16,7 @@ import javax.swing.SpringLayout;
 
 import pokemon.controller.PokemonController;
 
-public class pokemonPanel
+public class pokemonPanel extends JPanel
 {
 	private JButton updateButton;
 	private PokemonController baseController;
@@ -64,7 +67,31 @@ public class pokemonPanel
 	
 	private void setupPanel()
 	{
+		this.setLayout(Layout);
+		this.setPreferredSize(new Dimension(970,600));
+		this.setBackground(Color.DARK_GRAY);
 		
+		numberField.setEditable(false);
+		advancedArea.setEditable(false);
+		advancedArea.setWrapStyleWord(true);
+		advancedArea.setLineWrap(true);
+		
+		pokemonLabel.setVerticalTextPosition(JLabel.BOTTOM);
+		pokemonLabel.setHorizontalTextPosition(JLabel.CENTER);
+		
+		this.add(pokedexSelector);
+		this.add(healthField);
+		this.add(healthLabel);
+		this.add(combatField);
+		this.add(combatLabel);
+		this.add(speedField);
+		this.add(speedLabel);
+		this.add(numberField);
+		this.add(numberLabel);
+		this.add(advancedArea);
+		this.add(advancedLabel);
+		this.add(pokemonLabel);
+		this.add(updateButton);
 	}
 	
 	private void setupLayout()
