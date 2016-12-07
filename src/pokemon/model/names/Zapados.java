@@ -1,5 +1,9 @@
 package pokemon.model.names;
 
-public class Zapados {
+import pokemon.model.Pokemon;
+import pokemon.model.types.*;
 
+public class Zapados extends Pokemon implements Fire, Electricity
+{
 }
+	

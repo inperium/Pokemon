@@ -1,5 +1,9 @@
 package pokemon.model.names;
 
-public class Jolteon {
+import pokemon.model.Pokemon;
+import pokemon.model.types.*;
 
+public class Jolteon extends Pokemon implements Electricity
+{
+	
 }

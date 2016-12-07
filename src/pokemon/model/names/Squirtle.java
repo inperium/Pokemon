@@ -1,5 +1,8 @@
 package pokemon.model.names;
 
-public class Squirtle {
+import pokemon.model.Pokemon;
+import pokemon.model.types.*;
 
+public class Squirtle extends Pokemon implements Water
+{
 }
