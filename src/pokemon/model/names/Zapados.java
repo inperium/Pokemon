@@ -5,5 +5,6 @@ import pokemon.model.types.*;
 
 public class Zapados extends Pokemon implements Fire, Electricity
 {
+	
 }
 	

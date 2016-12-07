@@ -5,4 +5,5 @@ import pokemon.model.types.*;
 
 public class Pikachu extends Pokemon implements Electricity
 {
+	
 }
