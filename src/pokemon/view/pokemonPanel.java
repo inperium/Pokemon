@@ -16,7 +16,7 @@ import javax.swing.SpringLayout;
 
 import pokemon.controller.PokemonController;
 
-public class pokemonPanel extends JPanel
+public class PokemonPanel extends JPanel
 {
 	private JButton updateButton;
 	private PokemonController baseController;
