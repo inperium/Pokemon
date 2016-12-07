@@ -36,7 +36,7 @@ public class ControllerTest
 	public void testUpdateSelected()
 	{
 		assertTrue("Pokedex has something in it", testedController.getPokedex().size() > 0);
-		assertTrue("Pokemon need real names", testedController.getPokedex().get(0).getName().equals(""));
+		assertFalse("Pokemon need real names", testedController.getPokedex().get(0).getName().equals(""));
 		testedController.updateSelected(0, "JUnit", 0, 0, .0);
 		assertTrue("Update method failed", testedController.getPokedex().get(0).getName().equals("JUnit"));
 	}
