@@ -1,6 +1,8 @@
 package pokemon.model.names;
 
-public class Charizard 
+import pokemon.model.*;
+
+public class Charizard extends Pokemon implements Fire
 {
 
 }
