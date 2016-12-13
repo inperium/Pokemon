@@ -8,10 +8,12 @@ public class Pokemon
 	private int healthPoints;
 	private int attackPoints;
 	private int defencePoints;
+	private int speed;
 	
-	public Pokemon() 
+	public Pokemon(String name, int pokedexID) 
 	{
-		
+		this.name = name;
+		this.pokedexID = pokedexID;
 	}
 
 	public String getPokemonTypes()
@@ -38,7 +40,6 @@ public class Pokemon
 	public String toString()
 	{
 		return null;
-	
 	}
 	
 	public String getPokemonInformation()
@@ -50,35 +51,35 @@ public class Pokemon
 	
 	public int getHealthPoints()
 	{
-		return 0;
+		return healthPoints;
 	}
 	
 	public int getAttackPoints()
 	{
-		return 0;
+		return attackPoints;
 	}
 
-	public String getname() {
+	public String getName() {
 		
-		return null;
+		return name;
 	}
 
-	public void setAttackPoints(int combat) {
-		
+	public void setAttackPoints(int attackPoints) {
+		this.attackPoints = attackPoints;
 	}
 
 	public void setSpeed(double speed) {
-		
-		
+		this.speed = (int) speed;
+
 	}
 
-	public void setHealthPoints(String name) {
-		
-		
+	public void setHealthPoints(int healthPoints) {
+		this.healthPoints = healthPoints;
+
 	}
 
 	public void setName(String name) {
-		
+		this.name = name;
 		
 	}
 }

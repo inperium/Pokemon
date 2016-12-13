@@ -8,7 +8,7 @@ public class Jolteon extends Pokemon implements Electricity
 
 	public Jolteon()
 	{
-		
+		super("Jolteon", 30);
 	}
 
 	@Override

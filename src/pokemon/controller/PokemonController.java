@@ -37,19 +37,19 @@ public class PokemonController
 		
 		for(int index = 0; index < pokedex.size(); index++)
 		{
-			pokemonNames[index] = pokedex.get(index).getname();
+			pokemonNames[index] = pokedex.get(index).getName();
 		}
 		return pokemonNames;
 	}
 
 	
-	public void updateSelected(int index, String name, int combat, int health, double speed)
+	public void updateSelected(int index, String name, int attackPoints, double speed, int healthPoints)
 	{
 	Pokemon current = pokedex.get(index);
 	current.setName(name);
-	current.setAttackPoints(combat);
+	current.setAttackPoints(attackPoints);
 	current.setSpeed(speed);
-	current.setHealthPoints(name);
+	current.setHealthPoints(healthPoints);
 	}
 	
 	public ArrayList<Pokemon> getPokedex()

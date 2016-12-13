@@ -8,7 +8,7 @@ public class Charizard extends Pokemon implements Fire
 
 	public Charizard()
 	{
-		super("Charizard", 24)
+		super("Charizard", 24);
 	}
 
 	@Override

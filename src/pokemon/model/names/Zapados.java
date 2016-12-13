@@ -8,7 +8,7 @@ public class Zapados extends Pokemon implements Fire, Electricity
 
 	public Zapados()
 	{
-		
+		super("Zapados", 49);
 	}
 
 	@Override
