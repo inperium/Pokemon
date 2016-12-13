@@ -7,7 +7,6 @@ public class Pokemon
 	private int pokedexID;
 	private int healthPoints;
 	private int attackPoints;
-	private int defencePoints;
 	private int speed;
 	
 	public Pokemon(String name, int pokedexID) 
@@ -73,8 +72,8 @@ public class Pokemon
 
 	}
 
-	public void setHealthPoints(int healthPoints) {
-		this.healthPoints = healthPoints;
+	public void setHealthPoints(double healthPoints) {
+		this.healthPoints = (int) healthPoints;
 
 	}
 

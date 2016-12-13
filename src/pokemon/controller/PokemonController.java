@@ -1,8 +1,8 @@
 package pokemon.controller;
 
 import java.util.ArrayList;
-
-import pokemon.model.Pokemon;
+import pokemon.model.*;
+import pokemon.model.names.*;
 import pokemon.view.PokemonFrame;
 
 public class PokemonController
@@ -18,18 +18,20 @@ public class PokemonController
 		baseFrame = new PokemonFrame(this);
 	}
 	
-	
 	public void start()
 	{
 		
 	}
 	
-	
 	private void buildPokedex()
 	{
-		
+		pokedex.add(new Charizard());
+		pokedex.add(new Jolteon());
+		pokedex.add(new Pikachu());
+		pokedex.add(new Squirtle());
+		pokedex.add(new Zapados());
+		pokedex.add(new Charizard());
 	}
-	
 	
 	public String[] buildPokedexText()
 	{
@@ -42,8 +44,7 @@ public class PokemonController
 		return pokemonNames;
 	}
 
-	
-	public void updateSelected(int index, String name, int attackPoints, double speed, int healthPoints)
+	public void updateSelected(int index, String name, int attackPoints, double speed, double healthPoints)
 	{
 	Pokemon current = pokedex.get(index);
 	current.setName(name);
@@ -59,6 +60,5 @@ public class PokemonController
 	
 	public PokemonFrame getBaseFrame() {
 		return baseFrame;
-	}
-	
+	}	
 }
