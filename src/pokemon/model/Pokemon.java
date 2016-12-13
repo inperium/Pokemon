@@ -3,6 +3,17 @@ package pokemon.model;
 public class Pokemon
 {
 	
+	private String name;
+	private int pokedexID;
+	private int healthPoints;
+	private int attackPoints;
+	private int defencePoints;
+	
+	public Pokemon() 
+	{
+		
+	}
+
 	public String getPokemonTypes()
 	{
 		String pokemonTypes = "This Pokemon is of type(s):\n";

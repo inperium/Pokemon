@@ -57,4 +57,8 @@ public class PokemonController
 			return pokedex;
 		}
 	
+	public PokemonFrame getBaseFrame() {
+		return baseFrame;
+	}
+	
 }
