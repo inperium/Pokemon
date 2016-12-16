@@ -11,7 +11,7 @@ public class PokemonFrame extends JFrame
 	public PokemonFrame(PokemonController pokemonController) 
 	{
 		super();
-		this.baseController = baseController;
+		this.baseController = pokemonController;
 		this.pokemonPanel = new PokemonPanel(baseController);
 		
 		this.setupFrame();

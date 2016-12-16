@@ -1,18 +1,44 @@
 package pokemon.model;
 
+import java.awt.Color;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class Pokemon
 {
 	
 	private String name;
-	private int pokedexID;
+	private static int pokedexID;
 	private int healthPoints;
 	private int attackPoints;
 	private int speed;
+	private Color backgroundColor;
 	
-	public Pokemon(String name, int pokedexID) 
+	public Pokemon(String name, int pokedexID, int speed, int attackPoints, int healthPoints) 
 	{
+		this.healthPoints = healthPoints;
 		this.name = name;
 		this.pokedexID = pokedexID;
+		this.speed = speed;
+		this.setSpeed(speed);
+		this.attackPoints = attackPoints;
+	}
+	
+	public String getAttackString() {
+		String attackString = "";
+		for(Class<?> interfacez : getClass().getInterfaces()){
+			for(Method method : interfacez.getMethods()){
+				attackString += "The method "+ method.getName() + " does ";
+				try{
+					Method attackMethod = getClass().getMethod(method.getName());
+					int attackNum = (int) attackMethod.invoke(this);
+					attackString += attackNum + " attack damage.\n";
+				}catch(IllegalArgumentException | NoSuchMethodException | SecurityException | IllegalAccessException | InvocationTargetException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return attackString;
 	}
 
 	public String getPokemonTypes()
@@ -80,5 +106,25 @@ public class Pokemon
 	public void setName(String name) {
 		this.name = name;
 		
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	public static int getPokedexID() {
+		return pokedexID;
+	}
+
+	public Color getBackgroundColor() {
+		return backgroundColor;
+	}
+
+	public void setBackgroundColor(Color backgroundColor) {
+		this.backgroundColor = backgroundColor;
 	}
 }

@@ -25,12 +25,12 @@ public class PokemonController
 	
 	private void buildPokedex()
 	{
-		pokedex.add(new Charizard());
+		pokedex.add(new Charizard("Charizard"));
 		pokedex.add(new Jolteon());
 		pokedex.add(new Pikachu());
 		pokedex.add(new Squirtle());
 		pokedex.add(new Zapados());
-		pokedex.add(new Charizard());
+		pokedex.add(new Charizard("Fire Dragon"));
 	}
 	
 	public String[] buildPokedexText()

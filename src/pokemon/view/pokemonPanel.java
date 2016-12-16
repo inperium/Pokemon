@@ -7,7 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import pokemon.model.Pokemon;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -33,7 +34,7 @@ public class PokemonPanel extends JPanel
 	private JTextField numberField;
 	private JLabel advancedLabel;
 	private JTextArea advancedArea;
-	//private JComboBox pokedexSelector;
+	private JComboBox pokedexSelector;
 	private JLabel combatLabel;
 	private JLabel healthLabel;
 	private JLabel speedLabel;
@@ -54,7 +55,7 @@ public class PokemonPanel extends JPanel
 		this.speedField = new JTextField(5);
 		this.numberField = new JTextField(5);
 		this.advancedArea = new JTextArea(10, 25);
-		//this.pokedexSelector = new JComboBox(baseController.buildPokedexText());
+		this.pokedexSelector = new JComboBox(baseController.buildPokedexText());
 		this.advancedLabel = new JLabel("Advanced information");
 		this.combatLabel = new JLabel("Combat Points: ");
 		this.healthLabel = new JLabel("Health Points: ");
@@ -79,7 +80,7 @@ public class PokemonPanel extends JPanel
 		advancedArea.setWrapStyleWord(true);
 		advancedArea.setLineWrap(true);
 		
-		//this.add(pokedexSelector);
+		this.add(pokedexSelector);
 		this.add(healthField);
 		this.add(healthLabel);
 		this.add(combatField);
@@ -110,17 +111,17 @@ public class PokemonPanel extends JPanel
 		Layout.putConstraint(SpringLayout.NORTH, numberField, 28, SpringLayout.NORTH, this);
 		Layout.putConstraint(SpringLayout.WEST, numberField, 0, SpringLayout.WEST, healthField);
 		Layout.putConstraint(SpringLayout.EAST, advancedArea, -121, SpringLayout.EAST, this);
-		//Layout.putConstraint(SpringLayout.NORTH, updateButton, -1, SpringLayout.NORTH, pokedexSelector);
-		//Layout.putConstraint(SpringLayout.WEST, updateButton, 20, SpringLayout.EAST, pokedexSelector);
-		//Layout.putConstraint(SpringLayout.EAST, pokedexSelector, 301, SpringLayout.WEST, this);
-		//Layout.putConstraint(SpringLayout.WEST, pokedexSelector, 38, SpringLayout.WEST, this);
+		Layout.putConstraint(SpringLayout.NORTH, updateButton, -1, SpringLayout.NORTH, pokedexSelector);
+		Layout.putConstraint(SpringLayout.WEST, updateButton, 20, SpringLayout.EAST, pokedexSelector);
+		Layout.putConstraint(SpringLayout.EAST, pokedexSelector, 301, SpringLayout.WEST, this);
+		Layout.putConstraint(SpringLayout.WEST, pokedexSelector, 38, SpringLayout.WEST, this);
 		Layout.putConstraint(SpringLayout.SOUTH, advancedLabel, -291, SpringLayout.SOUTH, this);
 		Layout.putConstraint(SpringLayout.NORTH, advancedArea, 13, SpringLayout.SOUTH, advancedLabel);
 		Layout.putConstraint(SpringLayout.EAST, advancedLabel, -282, SpringLayout.EAST, this);
 		Layout.putConstraint(SpringLayout.NORTH, advancedLabel, 108, SpringLayout.SOUTH, combatLabel);
 		Layout.putConstraint(SpringLayout.NORTH, combatLabel, 5, SpringLayout.NORTH, healthField);
 		Layout.putConstraint(SpringLayout.WEST, combatLabel, 0, SpringLayout.WEST, advancedArea);
-		//Layout.putConstraint(SpringLayout.NORTH, pokedexSelector, -4, SpringLayout.NORTH, healthLabel);
+		Layout.putConstraint(SpringLayout.NORTH, pokedexSelector, -4, SpringLayout.NORTH, healthLabel);
 		Layout.putConstraint(SpringLayout.NORTH, healthLabel, 5, SpringLayout.NORTH, numberField);
 		Layout.putConstraint(SpringLayout.WEST, healthLabel, 0, SpringLayout.WEST, combatLabel);
 		Layout.putConstraint(SpringLayout.WEST, combatField, 93, SpringLayout.EAST, speedLabel);
@@ -128,64 +129,47 @@ public class PokemonPanel extends JPanel
 		Layout.putConstraint(SpringLayout.WEST, speedLabel, 0, SpringLayout.WEST, combatLabel);
 		Layout.putConstraint(SpringLayout.WEST, numberLabel, 0, SpringLayout.WEST, combatLabel);
 		Layout.putConstraint(SpringLayout.SOUTH, numberLabel, -27, SpringLayout.NORTH, speedLabel);
-		//Layout.putConstraint(SpringLayout.EAST, pokemonLabel, 0, SpringLayout.EAST, pokedexSelector);
+		Layout.putConstraint(SpringLayout.EAST, pokemonLabel, 0, SpringLayout.EAST, pokedexSelector);
 	}
 	
 	private void setupListeners()
 	{
-		/*
-		pokedexSelector.addActionListner(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent selection)
-			{
-				int selected = pokedexSelector.getSelectedIndex();
-				nameField.setText(baseController.getPokedex().get(selected).getName());
-				numberField.setText(baseController.getPokedex().get(selected).getNumber() + "");
-				combatField.setText(baseController.getPokedex().get(selected).getAttackPoints() + "");
-				speedField.setText(baseController.getPokedex().get(selected).getSpeed() + "");
-				healthField.setText(baseController.getPokedex().get(selected).getHealthPoints() + "");
-				numberField.setText(baseController.getPokedex().get(selected).getNumber() + "");
-				
-				
+		updateButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(isValidInteger(healthField.getText())){
+					int selected = pokedexSelector.getSelectedIndex();
+					Pokemon pokemon = baseController.getPokedex().get(selected);
+					baseController.updateSelected(selected, pokemon.getName(), pokemon.getAttackPoints(), pokemon.getSpeed(), pokemon.getHealthPoints());
+					pokedexSelector.repaint();
+					pokedexSelector.setModel(new DefaultComboBoxModel<>(baseController.buildPokedexText()));
+					pokedexSelector.setSelectedIndex(selected);
+				}
+			}
+
+			private boolean isValidInteger(String input){
+				boolean valid = false;
+				try{
+					Integer.parseInt(input);
+					valid = true;
+				}catch(NumberFormatException e){
+					valid = false;
+				}
+				return valid;
 			}
 		});
-		
-		updateButton.addActionListener(new ActionListener(){
-			public void actionperformed(ActionEvent selection)
-			{
-				if(isValidName(nameField.getText()) && isValidInteger(combatField.getText()) && isValicInteger(healthField.gettext()))
-				{
-					int selected = pokedexSelector.getSelectedIndex();
-					baseController.getPokedex().get(selected).setName(nameField.getText());
-					baseController.getPokedex().get(selected).setHealthPoints(Integer.parseInt(healthField.getText()));
-					baseController.getPokedex().get(selected).setAttackPoints(Integer.parseInt(combatField.getText()));
-					baseController.getPokedex().get(selected).setSpeed(Double.parseDouble(speedField.getText()));
-				}
-			});
-		}
-		
-		this.addMouseListener(new MouseListener()
-		{
-			public void mouseEntered(MouseEvent entered)
-			{
-				JOptionPane.showMessageDialog(baseController.getBaseFrame(),  "The mouse entered the program");
+
+		pokedexSelector.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Pokemon pokemon = baseController.getPokedex().get(pokedexSelector.getSelectedIndex());
+				numberField.setText(String.valueOf(pokemon.getPokedexID()));
+				nameField.setText(pokemon.getName());
+				healthField.setText(String.valueOf(pokemon.getHealthPoints()));
+				combatField.setText(String.valueOf(pokemon.getAttackPoints()));
+				
+				setBackground(pokemon.getBackgroundColor());
 			}
-			public void mouseReleased(MouseEvent released)
-			{
-				JOptionPane.showMessageDialog(baseController.getBaseFrame(),  "The mouse was released");
-			}
-			public void mouseExited(MouseEvent exited)
-			{
-				JOptionPane.showMessageDialog(baseController.getBaseFrame(),  "The mouse exited the program");
-			}
-			public void mouseClicked(MouseEvent clicked)
-			{
-				JOptionPane.showMessageDialog(baseController.getBaseFrame(),  "The mouse was clicked");
-			}
-			public void mousePressed(MouseEvent pressed)
-			{
-				JOptionPane.showMessageDialog(baseController.getBaseFrame(),  "The mouse was pressed");
-			}
-		});*/
+		});
 	}
 }

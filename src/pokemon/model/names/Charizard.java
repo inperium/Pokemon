@@ -1,14 +1,17 @@
 package pokemon.model.names;
 
+import java.awt.Color;
+
 import pokemon.model.Pokemon;
 import pokemon.model.types.Fire;
 
 public class Charizard extends Pokemon implements Fire
 {
 
-	public Charizard()
+	public Charizard(String name)
 	{
-		super("Charizard", 24);
+		super(name, 56, 15, 60, 80);
+		super.setBackgroundColor(new Color(255,49,47));
 	}
 
 	@Override
