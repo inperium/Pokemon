@@ -1,19 +1,15 @@
 package pokemon.view;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import pokemon.model.Pokemon;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -73,7 +69,7 @@ public class PokemonPanel extends JPanel
 	{
 		this.setLayout(Layout);
 		this.setPreferredSize(new Dimension(970,600));
-		this.setBackground(Color.DARK_GRAY);
+		this.setBackground(new Color(255,49,47));
 		
 		numberField.setEditable(false);
 		advancedArea.setEditable(false);
@@ -169,6 +165,21 @@ public class PokemonPanel extends JPanel
 				combatField.setText(String.valueOf(pokemon.getAttackPoints()));
 				
 				setBackground(pokemon.getBackgroundColor());
+				changeImageDisplay(pokemon.getName());
+			}
+
+			public void changeImageDisplay(String pokemonName){
+				String path = "/pokemon/view/images/";
+				String defaultName = "charizard";
+				String extension = ".png";
+				try{
+					pokemonIcon = new ImageIcon(this.getClass().getResource(path + pokemonName.toLowerCase() + extension));
+				}catch(NullPointerException missingFile){
+					pokemonIcon = new ImageIcon(this.getClass().getResource(path + defaultName + extension));
+				}
+				pokemonLabel.setIcon(pokemonIcon);
+				pokemonLabel.setText("My name is: " + pokemonName);
+				repaint();
 			}
 		});
 	}
