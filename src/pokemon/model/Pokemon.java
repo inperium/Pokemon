@@ -8,11 +8,12 @@ public class Pokemon
 {
 	
 	private String name;
-	private static int pokedexID;
+	private int pokedexID;
 	private int healthPoints;
 	private int attackPoints;
 	private int speed;
 	private Color backgroundColor;
+	private String temp;
 	
 	public Pokemon(String name, int pokedexID, int speed, int attackPoints, int healthPoints) 
 	{
@@ -55,7 +56,7 @@ public class Pokemon
 		
 		for(String current : pokeTypes)
 		{
-			String temp = current.replace(this.getClass().getPackage().getName() + ".", "");
+			temp = current.replace(this.getClass().getPackage().getName() + ".", "");
 			pokemonTypes += temp = "\n";
 		}
 		
@@ -64,7 +65,7 @@ public class Pokemon
 
 	public String toString()
 	{
-		return null;
+		return "Name: " + this.name + "\nHealth Points: " + this.healthPoints + "\nAttack Points: " + this.attackPoints;
 	}
 	
 	public String getPokemonInformation()
