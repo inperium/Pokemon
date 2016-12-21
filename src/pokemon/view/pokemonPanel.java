@@ -161,8 +161,9 @@ public class PokemonPanel extends JPanel
 				Pokemon pokemon = baseController.getPokedex().get(pokedexSelector.getSelectedIndex());
 				numberField.setText(String.valueOf(pokemon.getPokedexID()));
 				nameField.setText(pokemon.getName());
-				healthField.setText(String.valueOf(pokemon.getHealthPoints()));
-				combatField.setText(String.valueOf(pokemon.getAttackPoints()));
+				healthField.setText(String.valueOf(pokemon.getAttackPoints()));
+				combatField.setText(String.valueOf(pokemon.getSpeed()));
+				speedField.setText(String.valueOf(pokemon.getHealthPoints()));
 				
 				setBackground(pokemon.getBackgroundColor());
 				changeImageDisplay(pokemon.getName());

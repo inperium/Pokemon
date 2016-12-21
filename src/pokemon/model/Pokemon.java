@@ -116,7 +116,7 @@ public class Pokemon
 		this.speed = speed;
 	}
 
-	public static int getPokedexID() {
+	public int getPokedexID() {
 		return pokedexID;
 	}
 

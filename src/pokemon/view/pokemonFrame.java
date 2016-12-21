@@ -19,11 +19,8 @@ public class PokemonFrame extends JFrame
 
 	private void setupFrame() {
 		this.setContentPane(pokemonPanel);
-		this.setTitle("The Pokedex");
+		this.setTitle("Pokemon Pokedex");
 		this.setSize(1200, 800);
 		this.setVisible(true);	
 	}
-
-
-
 }
