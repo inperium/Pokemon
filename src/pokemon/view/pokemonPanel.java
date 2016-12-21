@@ -93,6 +93,10 @@ public class PokemonPanel extends JPanel
 	
 	private void setupLayout()
 	{
+		Layout.putConstraint(SpringLayout.NORTH, pokemonLabel, 0, SpringLayout.NORTH, attackField);
+		Layout.putConstraint(SpringLayout.WEST, pokemonLabel, 23, SpringLayout.WEST, this);
+		Layout.putConstraint(SpringLayout.SOUTH, pokemonLabel, 331, SpringLayout.NORTH, attackField);
+		Layout.putConstraint(SpringLayout.EAST, pokemonLabel, 192, SpringLayout.EAST, pokedexSelector);
 		pokemonLabel.setVerticalTextPosition(JLabel.BOTTOM);
 		pokemonLabel.setHorizontalTextPosition(JLabel.CENTER);
 		Layout.putConstraint(SpringLayout.NORTH, updateButton, 28, SpringLayout.NORTH, this);
@@ -108,8 +112,6 @@ public class PokemonPanel extends JPanel
 		Layout.putConstraint(SpringLayout.NORTH, speedLabel, 122, SpringLayout.NORTH, this);
 		Layout.putConstraint(SpringLayout.SOUTH, numberLabel, -505, SpringLayout.SOUTH, this);
 		Layout.putConstraint(SpringLayout.NORTH, numberField, -5, SpringLayout.NORTH, numberLabel);
-		Layout.putConstraint(SpringLayout.NORTH, pokemonLabel, 0, SpringLayout.NORTH, advancedLabel);
-		Layout.putConstraint(SpringLayout.WEST, pokemonLabel, 187, SpringLayout.WEST, this);
 		Layout.putConstraint(SpringLayout.NORTH, attackField, 21, SpringLayout.SOUTH, speedField);
 		Layout.putConstraint(SpringLayout.EAST, attackField, 0, SpringLayout.EAST, speedField);
 		Layout.putConstraint(SpringLayout.EAST, advancedArea, -121, SpringLayout.EAST, this);
@@ -125,7 +127,6 @@ public class PokemonPanel extends JPanel
 		Layout.putConstraint(SpringLayout.WEST, speedField, 93, SpringLayout.EAST, speedLabel);
 		Layout.putConstraint(SpringLayout.WEST, speedLabel, 0, SpringLayout.WEST, combatLabel);
 		Layout.putConstraint(SpringLayout.WEST, numberLabel, 0, SpringLayout.WEST, combatLabel);
-		Layout.putConstraint(SpringLayout.EAST, pokemonLabel, 0, SpringLayout.EAST, pokedexSelector);
 	}
 	public void changeImageDisplay(String pokemonName){
 		String path = "/pokemon/view/images/";
@@ -153,9 +154,6 @@ public class PokemonPanel extends JPanel
 					{
 					baseController.updateSelected(selected, nameField.getText(), Integer.parseInt(attackField.getText()), Integer.parseInt(speedField.getText()), Integer.parseInt(healthField.getText()));
 					}
-					//selected, nameField.getText(), Integer.parseInt(attackField.getText()), Integer.parseInt(speedField.getText(), Integer.parseInt(healthField.getText()))
-					//baseController.updateSelected(selected, nameField.getText(), attackField.getText(), speedField.getText(), healthField.getText());
-					//selected, nameField.getText(), attackField.getText(), speedField.getText(), healthField.getText()
 					pokedexSelector.setModel(new DefaultComboBoxModel(baseController.buildPokedexText()));
 					pokedexSelector.setSelectedIndex(selected);
 				}
